@@ -2,12 +2,27 @@
 
   <main id="home-page-main">
     <section id="hero-image">
-      <img src="https://svgshare.com/i/xLx.svg">
+      <img src="" draggable="false" id="hero-img">
     </section>
     <section id="hero-text">
       <p><span>5e Character Creator</span><br>Your one stop shop for 5e Character Creation</p>
       <a href="#" id="hero-signup">Sign Up</a>
     </section>
   </main>
+
+  <script>
+    window.onload = randomPicture;
+    const imgArray = [
+      "https://svgshare.com/i/xLx.svg",
+      "https://i.imgur.com/9i4IA3u.png",
+      "https://i.imgur.com/rXVFq1e.png",
+      "https://i.imgur.com/LLYtS8y.png"
+    ];
+
+    function randomPicture() {
+      const randomIdx = Math.floor(Math.random() * imgArray.length);
+      document.getElementById('hero-img').src = imgArray[randomIdx];
+    }
+  </script>
 
   <%- include('./partials/footer') %>

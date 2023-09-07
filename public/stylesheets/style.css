@@ -53,8 +53,10 @@ nav > .container-fluid > .collapse > ul > li > a:hover {
 }
 
 #hero-image > img {
-  height: 40vh;
+  height: auto;
+  max-width: 20vw;
   filter: drop-shadow(15px 15px 15px #000); 
+  user-select: none;
 }
 
 #hero-text {
@@ -63,8 +65,10 @@ nav > .container-fluid > .collapse > ul > li > a:hover {
   justify-content: flex-start;
   align-content: center;
   color: white;
+  padding-left: 2rem;
   font-family: 'Montserrat', sans-serif;
   filter: drop-shadow(10px 10px 10px #000); 
+  user-select: none;
 }
 
 #hero-signup {
