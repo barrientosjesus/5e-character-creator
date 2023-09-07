@@ -1,11 +1,104 @@
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Roboto', sans-serif; */
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  flex-direction: column;
+  font: 14px 'Roboto', Helvetica, Arial, sans-serif;
+  background: url('https://i.imgur.com/BuUWNkn.png');
+  background-size: cover;
+  grid-template-rows: 6vh 92vh 2vh;
+}
+
+nav.navbar {
+  background-color: rgba(0,0,0,.4);
+  height: 100%;
+}
+
+nav > .container-fluid {
+  height: 100%;
+}
+
+nav > .container-fluid > a {
+  height: 100%;
+}
+
+nav > .container-fluid > a > img {
+  height: 100%;
+}
+
+nav > .container-fluid > .collapse > ul > li > a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav > .container-fluid > .collapse > ul > li > a:hover {
+  color: #812da8;
+}
+
+#hero-image {
+  grid-area: hero-image;
+  display: grid;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#hero-image > img {
+  height: 40vh;
+  filter: drop-shadow(15px 15px 15px #000); 
+}
+
+#hero-text {
+  grid-area: hero-text;
+  display: grid;
+  justify-content: flex-start;
+  align-content: center;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  filter: drop-shadow(10px 10px 10px #000); 
+}
+
+#hero-signup {
+  justify-self: center;
+  text-decoration: none;
+  color: white;
+  padding: 2%;
+  border-radius: 10px;
+  background-color: #812da8;
+}
+
+#hero-signup:hover {
+  color: #812da8;
+  background-color: white;
+}
+
+#hero-text > p > span {
+  font-size: 3rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+#home-page-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+  "hero-image hero-text";
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: white;
+  font-family: 'Roboto', sans-serif;
 }
