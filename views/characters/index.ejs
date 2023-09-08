@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+
+  <main id="characters-main">
+    <% for(const c of classes) { %>
+        <div><%= c.name %></div>
+    <% } %>
+  </main>
+
+  <%- include('../partials/footer') %>

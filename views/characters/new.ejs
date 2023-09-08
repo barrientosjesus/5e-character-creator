@@ -1,6 +1,37 @@
-<%- include('./partials/header') %>
+<%- include('../partials/header') %>
 
-  <main id="new-character-main">
+  <main>
+    <form action="/characters" method="POST" id="new-character-main">
+      <section id="name-race-class">
+        <input class="form-control" type="text" name="name" id="new-name" placeholder="Character Name">
+        <select class="form-select" aria-label="Default select example" name="race">
+          <option selected>Select Race</option>
+          <% let newRaces = races[0]; %>
+          <% for(const r of races) { %>
+            <option value="<%= r.name %>">
+              <%= r.name %>
+            </option>
+            <% } %>
+        </select>
+        <select class="form-select" aria-label="Default select example" name="class">
+          <option selected>Select Class</option>
+          <% for(const c of classes) { %>
+            <option value="<%= c.name %>">
+              <%= c.name %>
+            </option>
+            <% } %>
+        </select>
+      </section>
+      <br><br><br><br>
+      <section id="submit-section">
+        <button type="submit" class="btn btn-success">Success</button>
+      </section>
+    </form>
   </main>
 
-  <%- include('./partials/footer') %>
+  <script>
+    const test = <%= newRaces %>
+    console.log(newRaces)
+  </script>
+
+  <%- include('../partials/footer') %>
