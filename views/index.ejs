@@ -6,7 +6,11 @@
     </section>
     <section id="hero-text">
       <p><span>5e Character Creator</span><br>Your one stop shop for 5e Character Creation</p>
-      <a href="#" id="hero-signup">Sign Up</a>
+      <% if (user) { %>
+        <a href="/characters/new" id="hero-signup">Create Character</a>
+      <% } else { %>
+      <a href="/auth/google" id="hero-signup">Sign Up</a>
+      <% } %>
     </section>
   </main>
 

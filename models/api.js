@@ -17,10 +17,8 @@ async function fetchData(endpoint, slug) {
 }
 
 module.exports = {
-    getClasses,
-    getRaces,
     compileData,
-    mergeDataByIndex
+    getClasses
 };
 
 async function getClasses() {

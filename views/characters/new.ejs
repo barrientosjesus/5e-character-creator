@@ -2,11 +2,13 @@
 
   <main>
     <form action="/characters" method="POST" id="new-character-main">
+      <div id="ac">
+        <i class="bi bi-shield"><span>10</span></i>
+      </div>
       <section id="name-race-class">
         <input class="form-control" type="text" name="name" id="new-name" placeholder="Character Name">
         <select class="form-select" aria-label="Default select example" name="race">
           <option selected>Select Race</option>
-          <% let newRaces = races[0]; %>
           <% for(const r of races) { %>
             <option value="<%= r.name %>">
               <%= r.name %>
@@ -24,14 +26,16 @@
       </section>
       <br><br><br><br>
       <section id="submit-section">
-        <button type="submit" class="btn btn-success">Success</button>
+        <button type="submit" class="btn btn-success">Create</button>
       </section>
     </form>
   </main>
 
   <script>
-    const test = <%= newRaces %>
-    console.log(newRaces)
+    const classesData = <%- JSON.stringify(races) %>;
+    const findClass = classesData.find(el => el.index === 'elf')
+    
+    console.log(findClass);
   </script>
 
   <%- include('../partials/footer') %>
