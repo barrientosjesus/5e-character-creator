@@ -1,0 +1,23 @@
+<script>
+    let raceSelection;
+    let classSelection;
+    const test = document.getElementById('races');
+    const test2 = document.getElementById('ability-scores');
+    const classesData = <%- JSON.stringify(allData) %>;
+    test.addEventListener('change', (evt) => {
+        if (evt.target.tagName !== "SELECT") return;
+        const info = classesData[evt.target.id].find(el => el.name === evt.target.value);
+        console.log(info);
+        document.getElementById('new-info').style.visibility = "visible";
+        document.getElementById('race-age').innerText = info.age;
+        document.getElementById('race-alignment').innerText = info.alignment;
+    });
+
+    test2.addEventListener('change', (evt) => {
+        if (evt.target.tagName !== "INPUT") return;
+        const value = evt.target.value;
+        const mod = Math.floor((parseInt(value) - 10) / 2);
+        const bonusEl = evt.srcElement.nextElementSibling;
+        bonusEl.innerText = mod;
+    })
+</script>

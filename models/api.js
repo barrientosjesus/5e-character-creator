@@ -51,6 +51,28 @@ async function getSkills() {
     return fetchDataAndMerge(endPoint);
 }
 
+async function getLanguages() {
+    const endPoint = '/api/languages';
+    return fetchDataAndMerge(endPoint);
+}
+
+async function getProficiencies() {
+    const endPoint = '/api/proficiencies';
+    return fetchDataAndMerge(endPoint);
+}
+
+async function getAbilityScores() {
+    const endPoint = '/api/ability-scores';
+    return fetchDataAndMerge(endPoint);
+}
+
+async function getData(name, cata) {
+    name = convertNameToIndex(name);
+    const endPoint = `/api${'/' + cata}${'/' + name}`;
+    const data = await fetchData(endPoint);
+    return data;
+}
+
 async function compileData() {
     const allData = {};
     allData.classes = await getClasses();
@@ -59,6 +81,9 @@ async function compileData() {
     allData.alignments = await getAlignments();
     allData.feats = await getFeats();
     allData.skills = await getSkills();
+    allData.languages = await getLanguages();
+    allData.proficiencies = await getProficiencies();
+    allData.abilityScores = await getAbilityScores();
     return allData;
 }
 
@@ -75,4 +100,9 @@ async function mergeDataByIndex(obj) {
 
     const mergedObjects = Object.assign({}, object1, object2);
     return mergedObjects;
+}
+
+function convertNameToIndex(name) {
+    const index = name.toLowerCase().replace(/\s+/g, '-');
+    return index;
 }

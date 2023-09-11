@@ -2,40 +2,86 @@
 
   <main>
     <form action="/characters" method="POST" id="new-character-main">
-      <div id="ac">
-        <i class="bi bi-shield"><span>10</span></i>
-      </div>
-      <section id="name-race-class">
+      <section id="name-race-class" class="new-input-section">
         <input class="form-control" type="text" name="name" id="new-name" placeholder="Character Name">
-        <select class="form-select" aria-label="Default select example" name="race">
-          <option selected>Select Race</option>
-          <% for(const r of races) { %>
+        <select class="form-select drop-down-arrow" aria-label="Default select example" name="race" id="races">
+          <option disabled selected>Race</option>
+          <% for(const r of allData.races) { %>
             <option value="<%= r.name %>">
               <%= r.name %>
             </option>
             <% } %>
         </select>
-        <select class="form-select" aria-label="Default select example" name="class">
-          <option selected>Select Class</option>
-          <% for(const c of classes) { %>
+        <select class="form-select drop-down-arrow" aria-label="Default select example" name="class" id="classes">
+          <option disabled selected>Class</option>
+          <% for(const c of allData.classes) { %>
             <option value="<%= c.name %>">
               <%= c.name %>
             </option>
             <% } %>
         </select>
+        <select class="form-select drop-down-arrow" aria-label="Default select example" name="background"
+          id="backgrounds">
+          <option disabled selected>Background</option>
+          <% for(const b of allData.backgrounds) { %>
+            <option value="<%= b.name %>">
+              <%= b.name %>
+            </option>
+            <% } %>
+        </select>
+        <select class="form-select drop-down-arrow" aria-label="Default select example" name="alignment"
+          id="alignments">
+          <option disabled selected>Alignment</option>
+          <% for(const a of allData.alignments) { %>
+            <option value="<%= a.name %>">
+              <%= a.name %>
+            </option>
+            <% } %>
+        </select>
       </section>
-      <br><br><br><br>
+      <section id="skills-abilityscores">
+        <section id="proficiencies">
+          <h2>Proficiencies</h2>
+          <% allData.skills.forEach((s, index)=> { %>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" name="skills">
+              <label class="form-check-label" for="flexCheckDefault">
+                <%= s.name %>
+              </label>
+            </div>
+            <% }) %>
+        </section>
+        <section id="ability-scores">
+          <h2>Ability Scores</h2>
+          <% allData.abilityScores.forEach((as, index)=> { %>
+            <div class="input-group mb-3 new-attributes">
+              <span class="input-group-text attribute-label">
+                <%= as.name %>
+              </span>
+              <input type="number" class="form-control " name="attributes" min="1" step="1"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+              <span class="input-group-text attribute-label" id="<%= as.name %>"></span>
+            </div>
+            <% }) %>
+        </section>
+      </section>
+      <section id="new-attributes" class="new-input-section">
+        <% allData.abilityScores.forEach( as=> { %>
+          <div>
+            <%= as.name %>
+          </div>
+          <% }) %>
+      </section>
       <section id="submit-section">
-        <button type="submit" class="btn btn-success">Create</button>
+        <button type="submit" class="btn btn-success btn-lg">Create</button>
+      </section>
+      <section id="new-info">
+        <section><h3>Age:</h3><span id="race-age"></span></section>
+        <section><h3>Alignment:</h3><span id="race-alignment"></span></section>
       </section>
     </form>
   </main>
 
-  <script>
-    const classesData = <%- JSON.stringify(races) %>;
-    const findClass = classesData.find(el => el.index === 'elf')
-    
-    console.log(findClass);
-  </script>
+  <%- include('./script') %>
 
-  <%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

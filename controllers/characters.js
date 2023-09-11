@@ -17,12 +17,7 @@ async function index(req, res) {
 async function newCharacter(req, res) {
     const data = await API.compileData();
     res.render('characters/new', {
-        classes: data.classes,
-        races: data.races,
-        alignments: data.alignments,
-        backgrounds: data.backgrounds,
-        feats: data.feats,
-        skills: data.skills,
+        allData: data,
         title: "New Character"
     });
 }
