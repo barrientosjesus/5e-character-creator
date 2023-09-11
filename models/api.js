@@ -1,9 +1,9 @@
 const fetch = require('node-fetch');
 const baseURL = "https://www.dnd5eapi.co";
 
-async function fetchData(endpoint, slug) {
+async function fetchData(endPoint, slug) {
     try {
-        const apiURL = `${baseURL}${endpoint}`;
+        const apiURL = `${baseURL}${endPoint}`;
         const response = await fetch(apiURL);
 
         if (!response.ok) {
@@ -18,7 +18,8 @@ async function fetchData(endpoint, slug) {
 
 module.exports = {
     compileData,
-    getClasses
+    getClasses,
+    getData
 };
 
 async function getClasses() {

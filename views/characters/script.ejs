@@ -1,28 +1,56 @@
 <script>
     const traitList = [];
+    const equipmentList = [];
     const races = document.getElementById('races');
-    const test2 = document.getElementById('ability-scores');
-    const classesData = <%- JSON.stringify(allData) %>;
+    const asMOD = document.getElementById('ability-scores');
+    const classes = document.getElementById('classes');
+    const checkboxes = document.querySelectorAll('input[name="languages"]');
+    const allData = <%- JSON.stringify(allData) %>;
+
     races.addEventListener('change', (evt) => {
         if (evt.target.tagName !== "SELECT") return;
         traitList.length = 0;
+        checkboxes.forEach(el => el.checked = false);
         const childEls = Array.from(document.getElementById('new-info').children);
-        const race = classesData[evt.target.id].find(el => el.name === evt.target.value);
-        console.log(race);
+        const race = allData[evt.target.id].find(el => el.name === evt.target.value);
         childEls.forEach(child => {
             child.style.opacity = 1;
         });
-        race.traits.forEach(el => traitList.push(el.name))
+        checkboxes.forEach((checkbox) => {
+            const languageObj = race.languages.find((language) => language.name === checkbox.value);
+            if (languageObj) {
+                checkbox.checked = true;
+            }
+        });
+        race.traits.forEach(el => traitList.push(el.name));
         document.getElementById('race-age').innerText = race.age;
         document.getElementById('race-alignment').innerText = race.alignment;
         document.getElementById('race-traits').innerHTML = traitList.length > 0 ? traitList.join(', ') : 'None';
     });
 
-    test2.addEventListener('change', (evt) => {
+    asMOD.addEventListener('change', (evt) => {
         if (evt.target.tagName !== "INPUT") return;
         const value = evt.target.value;
         const mod = Math.floor((parseInt(value) - 10) / 2);
         const bonusEl = evt.srcElement.nextElementSibling;
         bonusEl.innerText = mod;
-    })
+    });
+
+    classes.addEventListener('change', (evt) => {
+        if (evt.target.tagName !== 'SELECT') return;
+        equipmentList.length = 0;
+        const classChosen = allData[evt.target.id].find(el => el.name === evt.target.value);
+        console.log(classChosen)
+        const startingEquipmentParent = document.getElementById('class-starting-items');
+        const profChoices = document.getElementById('class-prof-choices');
+        startingEquipmentParent.innerHTML = '';
+        classChosen.starting_equipment_options.forEach(el => equipmentList.push(el));
+        profChoices.innerText = classChosen.proficiency_choices[0].desc;
+
+        equipmentList.forEach(el => {
+            const newEl = document.createElement('li');
+            newEl.innerText = el.desc;
+            startingEquipmentParent.append(newEl);
+        });
+    });
 </script>

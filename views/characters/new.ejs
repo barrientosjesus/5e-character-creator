@@ -39,21 +39,38 @@
             <% } %>
         </select>
       </section>
-      <section id="skills-abilityscores">
+      <section id="skills-languages">
         <section id="proficiencies">
           <h2>Proficiencies</h2>
-          <% allData.skills.forEach((s, index)=> { %>
+          <% allData.skills.forEach((s, idx)=> { %>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" name="skills">
+              <input class="form-check-input" type="checkbox" value="<%= s.name %>" id="flexCheckDefault" name="skills">
               <label class="form-check-label" for="flexCheckDefault">
                 <%= s.name %>
               </label>
             </div>
             <% }) %>
         </section>
-        <section id="ability-scores">
-          <h2>Ability Scores</h2>
-          <section id="ability-score-headings"><small>Name</small><small>Score</small><small>Mod</small></section>
+        <section id="languages">
+          <h2>Languages</h2>
+          <% allData.languages.forEach((l, idx)=> { %>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="<%= l.name %>" id="flexCheckDefault"
+                name="languages">
+              <label class="form-check-label" for="flexCheckDefault">
+                <%= l.name %>
+              </label>
+            </div>
+            <% }) %>
+        </section>
+      </section>
+      <section id="ability-scores">
+        <h2>Ability Scores</h2>
+        <section id="as-headings">
+          <section id="ability-score-headings1"><small>Name</small><small>Score</small><small>Mod</small></section>
+          <section id="ability-score-headings2"><small>Name</small><small>Score</small><small>Mod</small></section>
+        </section>
+        <section id="score-list">
           <% allData.abilityScores.forEach((as, index)=> { %>
             <div class="input-group mb-3 new-attributes">
               <span class="input-group-text attribute-label">
@@ -66,9 +83,6 @@
             <% }) %>
         </section>
       </section>
-      <section id="submit-section">
-        <button type="submit" class="btn btn-success btn-lg">Create</button>
-      </section>
       <section id="new-info">
         <section>
           <h3>Race Age:</h3><span id="race-age"></span>
@@ -77,8 +91,19 @@
           <h3>Race Alignment:</h3><span id="race-alignment"></span>
         </section>
         <section>
-          <h3>Traits:</h3><span id="race-traits"></span>
+          <h3>Class Traits:</h3><span id="race-traits"></span>
         </section>
+        <section>
+          <h3>Starting Equipment Options:</h3>
+          <ul id="class-starting-items">
+            <ul>
+        </section>
+        <section>
+          <h3>Class Proficiency Choices:</h3><span id="class-prof-choices"></span>
+        </section>
+      </section>
+      <section id="submit-section">
+        <button type="submit" class="btn btn-success btn-lg">Create</button>
       </section>
     </form>
   </main>
