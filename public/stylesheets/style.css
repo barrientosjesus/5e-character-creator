@@ -8,6 +8,12 @@ font-family: 'Roboto', sans-serif; */
   box-sizing: border-box;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -133,9 +139,7 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
   display: grid;
   grid-column: 2 / 4;
   grid-row: 2 / 5;
-  justify-content: center;
-  justify-items: center;
-  align-content: center;
+  align-items: center;
   grid-template-columns: 1fr repeat(2, 4fr) 1fr;
   color: white;
 }
@@ -150,22 +154,53 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
   grid-column: 3 / 4;
   align-content: space-between;
   justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
 }
 
-#new-attributes {
-  grid-row: 6 / 7;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 1fr;
+#ability-scores > h2 {
+  display: grid;
+  grid-column: 1 / 4;
 }
 
-.input-group > .attribute-label {
+#ability-scores>div.input-group{
+  display: grid;
+  grid-column: 1 / 4;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#ability-scores>div.input-group>.form-control {
+  text-align: center;
+}
+
+#ability-scores>div.input-group>.input-group-text {
+  display: grid;
+  text-align: center;
+}
+
+#ability-scores>#ability-score-headings {
+  display: grid;
+  grid-column: 1 / 4;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: end;
+  width: 100%;
+}
+
+div.input-group>span.input-group-text {
+  width: 75%;
+}
+
+.input-group>.attribute-label {
   background-color: var(--main-el-color);
   color: white;
 }
 
-.input-group > input.form-control {
+.input-group>input.form-control {
   background-color: rgba(51, 51, 51, 0.6);
   color: white;
+  width: 100%;
 }
 
 #new-info {
@@ -178,7 +213,7 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
   border-radius: 10px;
 }
 
-#new-info>*{
+#new-info>* {
   opacity: 0;
   padding: 1rem;
   transition: all 1s ease-out;
@@ -227,7 +262,8 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
   color: white;
 }
 
-#name-race-class>*, #backgrounds-alignments>* {
+#name-race-class>*,
+#backgrounds-alignments>* {
   display: grid;
   width: 50%;
   color: white;

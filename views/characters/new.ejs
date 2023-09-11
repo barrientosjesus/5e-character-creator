@@ -53,6 +53,7 @@
         </section>
         <section id="ability-scores">
           <h2>Ability Scores</h2>
+          <section id="ability-score-headings"><small>Name</small><small>Score</small><small>Mod</small></section>
           <% allData.abilityScores.forEach((as, index)=> { %>
             <div class="input-group mb-3 new-attributes">
               <span class="input-group-text attribute-label">
@@ -65,20 +66,19 @@
             <% }) %>
         </section>
       </section>
-      <section id="new-attributes" class="new-input-section">
-        <% allData.abilityScores.forEach( as=> { %>
-          <div>
-            <%= as.name %>
-          </div>
-          <% }) %>
-      </section>
       <section id="submit-section">
         <button type="submit" class="btn btn-success btn-lg">Create</button>
       </section>
       <section id="new-info">
-        <section><h3>Race Age:</h3><span id="race-age"></span></section>
-        <section><h3>Race Alignment:</h3><span id="race-alignment"></span></section>
-        <section><h3>Traits:</h3><span id="race-traits"></span></section>
+        <section>
+          <h3>Race Age:</h3><span id="race-age"></span>
+        </section>
+        <section>
+          <h3>Race Alignment:</h3><span id="race-alignment"></span>
+        </section>
+        <section>
+          <h3>Traits:</h3><span id="race-traits"></span>
+        </section>
       </section>
     </form>
   </main>
