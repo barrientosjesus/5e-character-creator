@@ -1,16 +1,21 @@
 <script>
-    let raceSelection;
-    let classSelection;
-    const test = document.getElementById('races');
+    const traitList = [];
+    const races = document.getElementById('races');
     const test2 = document.getElementById('ability-scores');
     const classesData = <%- JSON.stringify(allData) %>;
-    test.addEventListener('change', (evt) => {
+    races.addEventListener('change', (evt) => {
         if (evt.target.tagName !== "SELECT") return;
-        const info = classesData[evt.target.id].find(el => el.name === evt.target.value);
-        console.log(info);
-        document.getElementById('new-info').style.visibility = "visible";
-        document.getElementById('race-age').innerText = info.age;
-        document.getElementById('race-alignment').innerText = info.alignment;
+        traitList.length = 0;
+        const childEls = Array.from(document.getElementById('new-info').children);
+        const race = classesData[evt.target.id].find(el => el.name === evt.target.value);
+        console.log(race);
+        childEls.forEach(child => {
+            child.style.opacity = 1;
+        });
+        race.traits.forEach(el => traitList.push(el.name))
+        document.getElementById('race-age').innerText = race.age;
+        document.getElementById('race-alignment').innerText = race.alignment;
+        document.getElementById('race-traits').innerHTML = traitList.length > 0 ? traitList.join(', ') : 'None';
     });
 
     test2.addEventListener('change', (evt) => {
