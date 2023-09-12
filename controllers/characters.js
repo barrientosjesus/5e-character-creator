@@ -7,7 +7,8 @@ module.exports = {
     new: newCharacter,
     create,
     show,
-    delete: deleteCharacter
+    delete: deleteCharacter,
+    edit
 };
 
 async function index(req, res) {
@@ -33,6 +34,16 @@ async function show(req, res) {
         title: `Character | ${character.name}`,
         character
     });
+}
+
+async function edit(req, res) {
+    const character = await Character.findById(req.params.id);
+    const data = await API.compileData();
+    res.render('characters/edit', {
+        title: 'Edit Character',
+        allData: data,
+        character
+    })
 }
 
 async function deleteCharacter(req, res) {

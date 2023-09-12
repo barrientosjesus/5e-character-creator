@@ -8,7 +8,38 @@
     const raceData = <%- JSON.stringify(allData.races) %>;
     const classData = <%- JSON.stringify(allData.classes) %>;
 
-    races.addEventListener('change', (evt) => {
+    races.addEventListener('change', handleRaceSelect);
+
+    asMOD.addEventListener('change', updateAbilityScoreMods);
+
+    classes.addEventListener('change', handleClassSelect);
+
+    function updateAbilityScoreMods(evt) {
+        if (evt.target.tagName !== "INPUT") return;
+        const value = evt.target.value;
+        const mod = Math.floor((parseInt(value) - 10) / 2);
+        const bonusEl = evt.srcElement.nextElementSibling;
+        bonusEl.innerText = mod;
+    }
+
+    function handleClassSelect(evt) {
+        if (evt.target.tagName !== 'SELECT') return;
+        equipmentList.length = 0;
+        const classChosen = classData.find(el => el.name === evt.target.value);
+        const startingEquipmentParent = document.getElementById('class-starting-items');
+        const profChoices = document.getElementById('class-prof-choices');
+        startingEquipmentParent.innerHTML = '';
+        classChosen.starting_equipment_options.forEach(el => equipmentList.push(el));
+        profChoices.innerText = classChosen.proficiency_choices[0].desc;
+
+        equipmentList.forEach(el => {
+            const newEl = document.createElement('li');
+            newEl.innerText = el.desc;
+            startingEquipmentParent.append(newEl);
+        });
+    }
+
+    function handleRaceSelect(evt) {
         if (evt.target.tagName !== "SELECT") return;
         traitList.length = 0;
         checkboxes.forEach(el => el.checked = false);
@@ -27,30 +58,5 @@
         document.getElementById('race-age').innerText = race.age;
         document.getElementById('race-alignment').innerText = race.alignment;
         document.getElementById('race-traits').innerHTML = traitList.length > 0 ? traitList.join(', ') : 'None';
-    });
-
-    asMOD.addEventListener('change', (evt) => {
-        if (evt.target.tagName !== "INPUT") return;
-        const value = evt.target.value;
-        const mod = Math.floor((parseInt(value) - 10) / 2);
-        const bonusEl = evt.srcElement.nextElementSibling;
-        bonusEl.innerText = mod;
-    });
-
-    classes.addEventListener('change', (evt) => {
-        if (evt.target.tagName !== 'SELECT') return;
-        equipmentList.length = 0;
-        const classChosen = classData.find(el => el.name === evt.target.value);
-        const startingEquipmentParent = document.getElementById('class-starting-items');
-        const profChoices = document.getElementById('class-prof-choices');
-        startingEquipmentParent.innerHTML = '';
-        classChosen.starting_equipment_options.forEach(el => equipmentList.push(el));
-        profChoices.innerText = classChosen.proficiency_choices[0].desc;
-
-        equipmentList.forEach(el => {
-            const newEl = document.createElement('li');
-            newEl.innerText = el.desc;
-            startingEquipmentParent.append(newEl);
-        });
-    });
+    }
 </script>

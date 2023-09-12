@@ -6,8 +6,9 @@ var charactersRouter = require('../controllers/characters');
 
 router.get('/', charactersRouter.index);
 router.get('/new', ensureLoggedIn, charactersRouter.new);
-router.get('/:id', charactersRouter.show)
+router.get('/:id', charactersRouter.show);
+router.get('/:id/edit', ensureLoggedIn, charactersRouter.edit);
 router.post('/', ensureLoggedIn, charactersRouter.create);
-router.delete('/:id', ensureLoggedIn, charactersRouter.delete)
+router.delete('/:id', ensureLoggedIn, charactersRouter.delete);
 
 module.exports = router;
