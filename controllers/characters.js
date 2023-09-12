@@ -5,7 +5,8 @@ const Character = require('../models/character');
 module.exports = {
     index,
     new: newCharacter,
-    create
+    create,
+    show
 };
 
 async function index(req, res) {
@@ -19,6 +20,14 @@ async function index(req, res) {
         characters: characters,
         title: title
     });
+}
+
+async function show(req, res) {
+    const character = await Character.findById(req.params.id).populate('user').populate('favorites');
+    res.render('characters/show', {
+        title: character.name,
+        character
+    })
 }
 
 async function newCharacter(req, res) {

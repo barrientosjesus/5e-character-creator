@@ -36,7 +36,7 @@ const characterSchema = new Schema({
 
 
 characterSchema.virtual('ac').get(function () {
-    const dexAttribute = this.attributes.find(attr => attr.name === 'dex');
+    const dexAttribute = this.abilityScores.find(attr => attr.name === 'DEX');
     const dexBonus = dexAttribute.bonus || 0;
     return 10 + dexBonus;
 });
