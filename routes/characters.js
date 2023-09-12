@@ -8,6 +8,7 @@ router.get('/', charactersRouter.index);
 router.get('/new', ensureLoggedIn, charactersRouter.new);
 router.get('/:id', charactersRouter.show);
 router.get('/:id/edit', ensureLoggedIn, charactersRouter.edit);
+router.put('/:id', ensureLoggedIn, charactersRouter.update);
 router.post('/', ensureLoggedIn, charactersRouter.create);
 router.delete('/:id', ensureLoggedIn, charactersRouter.delete);
 

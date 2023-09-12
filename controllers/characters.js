@@ -8,7 +8,8 @@ module.exports = {
     create,
     show,
     delete: deleteCharacter,
-    edit
+    edit,
+    update
 };
 
 async function index(req, res) {
@@ -44,6 +45,19 @@ async function edit(req, res) {
         allData: data,
         character
     })
+}
+
+async function update(req, res) {
+    console.log(req.params.id, ' | ',req.body)
+    req.body.abilityScores = await API.mergeArrays(req.body.abilityScores);
+
+    try {
+        await Character.findOneAndUpdate({_id: req.params.id}, req.body);
+        res.redirect('/characters');
+    } catch (err) {
+        console.log(err);
+        res.redirect('/characters');
+    }
 }
 
 async function deleteCharacter(req, res) {

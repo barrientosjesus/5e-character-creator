@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
   <main>
-    <form action="/characters" method="POST" id="new-character-main">
+    <form action="/characters/<%= character._id %>?_method=PUT" method="POST" id="new-character-main">
       <section id="name-race-class" class="new-input-section">
         <input class="form-control" type="text" name="name" id="new-name" placeholder="Character Name"
           value="<%= character.name %>">
@@ -116,9 +116,7 @@
         </section>
       </section>
       <section id="submit-section">
-        <form action="/characters" method="POST">
-          <button type="submit" class="btn btn-success btn-lg" path="/">Create</button>
-        </form>
+          <button type="submit" class="btn btn-primary btn-lg" path="/">Update</button>
       </section>
     </form>
   </main>
