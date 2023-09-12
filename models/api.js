@@ -19,7 +19,9 @@ async function fetchData(endPoint, slug) {
 module.exports = {
     compileData,
     getClasses,
-    getData
+    getData,
+    getAbilityScores,
+    mergeArrays
 };
 
 async function getClasses() {
@@ -64,7 +66,8 @@ async function getProficiencies() {
 
 async function getAbilityScores() {
     const endPoint = '/api/ability-scores';
-    return fetchDataAndMerge(endPoint);
+    const mergedData = fetchDataAndMerge(endPoint);
+    return mergedData;
 }
 
 async function getData(name, cata) {
@@ -99,6 +102,10 @@ async function mergeDataByIndex(obj) {
     let object1 = await obj;
     let object2 = await fetchData(object1.url);
 
+    delete object2.desc;
+    delete object1.url;
+    delete object2.url;
+
     const mergedObjects = Object.assign({}, object1, object2);
     return mergedObjects;
 }
@@ -106,4 +113,14 @@ async function mergeDataByIndex(obj) {
 function convertNameToIndex(name) {
     const index = name.toLowerCase().replace(/\s+/g, '-');
     return index;
+}
+
+async function mergeArrays(arr) {
+    const asArray = await getAbilityScores();
+    const mergedArray = asArray.map((obj, index) => ({
+        ...obj,
+        score: arr[index] ? parseInt(arr[index]) : 0,
+    }));
+
+    return mergedArray;
 }

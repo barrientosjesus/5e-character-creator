@@ -42,7 +42,7 @@
                                 Character</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My Characters</a>
+                            <a class="nav-link <%= title === 'My Characters' && 'active' %>" href="/characters?user=<%= user._id %>">My Characters</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>

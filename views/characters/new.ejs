@@ -76,7 +76,7 @@
               <span class="input-group-text attribute-label">
                 <%= as.name %>
               </span>
-              <input type="number" class="form-control " name="attributes" min="1" step="1"
+              <input type="number" class="form-control " name="abilityScores" min="1" step="1"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57">
               <span class="input-group-text attribute-label" id="<%= as.name %>"></span>
             </div>
@@ -103,7 +103,9 @@
         </section>
       </section>
       <section id="submit-section">
-        <button type="submit" class="btn btn-success btn-lg">Create</button>
+        <form action="/characters" method="POST">
+          <button type="submit" class="btn btn-success btn-lg" path="/">Create</button>
+        </form>
       </section>
     </form>
   </main>

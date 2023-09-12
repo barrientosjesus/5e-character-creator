@@ -5,14 +5,15 @@
     const asMOD = document.getElementById('ability-scores');
     const classes = document.getElementById('classes');
     const checkboxes = document.querySelectorAll('input[name="languages"]');
-    const allData = <%- JSON.stringify(allData) %>;
+    const raceData = <%- JSON.stringify(allData.races) %>;
+    const classData = <%- JSON.stringify(allData.classes) %>;
 
     races.addEventListener('change', (evt) => {
         if (evt.target.tagName !== "SELECT") return;
         traitList.length = 0;
         checkboxes.forEach(el => el.checked = false);
         const childEls = Array.from(document.getElementById('new-info').children);
-        const race = allData[evt.target.id].find(el => el.name === evt.target.value);
+        const race = raceData.find(el => el.name === evt.target.value);
         childEls.forEach(child => {
             child.style.opacity = 1;
         });
@@ -39,8 +40,7 @@
     classes.addEventListener('change', (evt) => {
         if (evt.target.tagName !== 'SELECT') return;
         equipmentList.length = 0;
-        const classChosen = allData[evt.target.id].find(el => el.name === evt.target.value);
-        console.log(classChosen)
+        const classChosen = classData.find(el => el.name === evt.target.value);
         const startingEquipmentParent = document.getElementById('class-starting-items');
         const profChoices = document.getElementById('class-prof-choices');
         startingEquipmentParent.innerHTML = '';

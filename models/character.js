@@ -14,15 +14,24 @@ const characterSchema = new Schema({
         type: String,
         required: true
     },
+    background: {
+        type: String,
+        require: true
+    },
     alignment: String,
     hitDice: Number,
-    proficiencies: [],
+    skills: [],
     languages: [],
     abilityScores: [],
     favorites: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        require: true
+    },
 });
 
 
