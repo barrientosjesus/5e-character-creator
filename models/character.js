@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { COLORS } = require('../public/javascripts/lookups');
 
 const characterSchema = new Schema({
     name: {
@@ -16,7 +17,7 @@ const characterSchema = new Schema({
     },
     background: {
         type: String,
-        require: true
+        required: true
     },
     alignment: String,
     hitDice: Number,
@@ -30,15 +31,21 @@ const characterSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        require: true
+        required: true
     },
 });
 
 
 characterSchema.virtual('ac').get(function () {
-    const dexAttribute = this.abilityScores.find(attr => attr.name === 'DEX');
-    const dexBonus = dexAttribute.bonus || 0;
+    const dexScore = this.abilityScores.find(as => as.name === 'DEX');
+    const dexBonus = dexScore.bonus || 0;
     return 10 + dexBonus;
+});
+
+characterSchema.virtual('classColor').get(function () {
+    const charClass = this.class;
+    const classColor = COLORS[charClass];
+    return classColor;
 });
 
 characterSchema.set('toJSON', { getters: true });

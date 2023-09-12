@@ -10,14 +10,17 @@ module.exports = {
 };
 
 async function index(req, res) {
-    const user = req.query.user || '';
-    const query = user ? { user } : {};
-    console.log(query)
+    const query = {};
+    if (req.query.user) query.user = req.query.user;
+    if (req.query.class) query.class = req.query.class;
+
     const characters = await Character.find(query);
-    const title = Object.keys(query).length === 0 ? 'Characters' : 'My Characters';
+    const title = query.user ? 'My Characters'
+        : query.class ? `${query.class} Characters` : 'Characters';
 
     res.render('characters/index', {
         characters: characters,
+        class: query.class,
         title: title
     });
 }
@@ -27,7 +30,7 @@ async function show(req, res) {
     res.render('characters/show', {
         title: character.name,
         character
-    })
+    });
 }
 
 async function newCharacter(req, res) {

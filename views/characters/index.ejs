@@ -1,26 +1,83 @@
 <%- include('../partials/header') %>
 
   <main id="characters-main">
+    <section id="index-filter">
+      <div>
+        <h5 class="text-center">Class Filter</h5>
+        <ul class="list-group">
+          <li class="list-group-item <%= title === 'Characters' ? 'active' : '' %>"><a href="/characters">All</a></li>
+          <li class="list-group-item <%= title === 'Barbarian Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Barbarian">Barbarian</a></li>
+          <li class="list-group-item <%= title === 'Bard Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Bard">Bard</a></li>
+          <li class="list-group-item <%= title === 'Cleric Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Cleric">Cleric</a></li>
+          <li class="list-group-item <%= title === 'Druid Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Druid">Druid</a></li>
+          <li class="list-group-item <%= title === 'Fighter Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Fighter">Fighter</a></li>
+          <li class="list-group-item <%= title === 'Monk Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Monk">Monk</a></li>
+          <li class="list-group-item <%= title === 'Paladin Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Paladin">Paladin</a></li>
+          <li class="list-group-item <%= title === 'Ranger Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Ranger">Ranger</a></li>
+          <li class="list-group-item <%= title === 'Rogue Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Rogue">Rogue</a></li>
+          <li class="list-group-item <%= title === 'Sorcerer Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Sorcerer">Sorcerer</a></li>
+          <li class="list-group-item <%= title === 'Warlock Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Warlock">Warlock</a></li>
+          <li class="list-group-item <%= title === 'Wizard Characters' ? 'active' : '' %>"><a
+              href="/characters?class=Wizard">Wizard</a></li>
+        </ul>
+      </div>
+    </section>
     <section id="show-characters">
-    <% if(characters) { %>
-      <% for(const c of characters) { %>
-        <a href="/characters/<%= c._id %>" alt="Mythrill" target="_self">
+      <% if(characters) { %>
+        <% for(const c of characters) { %>
           <div class="card">
-            <div class="wrapper">
-              <img src="https://ggayane.github.io/css-experiments/cards/force_mage-cover.jpg" class="cover-image" />
+            <div class="card-image">
+              <img src="https://cdn.midjourney.com/1371a8b3-8317-48f3-8107-3e012e15bbea/0_2.webp" alt="Character">
             </div>
-            <h3 class="title">
-              <%= c.name %>
-            </h3>
-            <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp"
-              class="character-card" />
+
+            <div class="card-body">
+              <span class="power" style="color:<%= c.classColor %>;">
+                <%= c.class %>
+              </span>
+              <h2>
+                <%= c.name %>
+              </h2>
+              <p>
+                <%= c.classColor %>
+              </p>
+            </div>
+
+            <div class="card-footer" style="background-color:<%= c.classColor %>;">
+              <% for(const s of c.abilityScores) { %>
+                <div class="info">
+                  <div class="value">
+                    <%= s.score %>
+                  </div>
+                  <div class="type">
+                    <%= s.name %>
+                  </div>
+                </div>
+                <% } %>
+            </div>
+
+            <div class="selector">
+              <a href="/characters/<%= c._id %>">
+                <button type="button" style="background-color:<%= c.classColor %>;">SHOW</button>
+              </a>
+            </div>
+
           </div>
-        </a>
-        <% } %>
-          <% } else { %>
-            NO NO NO
-            <% } %>
-          </section>
+          <% } %>
+            <% } else { %>
+              NO NO NO
+              <% } %>
+    </section>
   </main>
 
   <%- include('../partials/footer') %>
