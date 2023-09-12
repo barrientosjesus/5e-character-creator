@@ -1,8 +1,23 @@
 <%- include('../partials/header') %>
   <main id="character-show-page">
     <section id="character-show">
-      <%= character.name %>
-        <%= character.ac %>
+      <h1 style="color:<%= character.classColor %>;">
+        <%= character.name %>
+      </h1>
+      <h3 style="color:<%= character.classColor %>;">
+        <%= character.class %>
+      </h3>
+    </section>
+    <% if (user?._id.equals(character.user._id)) { %>
+    <section id="show-controls">
+      <form action="/characters/<%= character._id %>/update" method="GET">
+        <button type="submit" class="btn btn-primary">EDIT</button>
+      </form>
+      <br>
+      <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn-danger">DELETE</button>
+      </form>
+      <% } %>
     </section>
   </main>
   <%- include('../partials/footer') %>

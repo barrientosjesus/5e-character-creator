@@ -6,7 +6,8 @@ module.exports = {
     index,
     new: newCharacter,
     create,
-    show
+    show,
+    delete: deleteCharacter
 };
 
 async function index(req, res) {
@@ -27,10 +28,21 @@ async function index(req, res) {
 
 async function show(req, res) {
     const character = await Character.findById(req.params.id).populate('user').populate('favorites');
+    
     res.render('characters/show', {
-        title: character.name,
+        title: `Character | ${character.name}`,
         character
     });
+}
+
+async function deleteCharacter(req, res) {
+    try {
+        await Character.deleteOne({_id: req.params.id});
+        res.redirect('/characters');
+    } catch (err) {
+        console.log(err);
+        res.redirect('/characters');
+    }
 }
 
 async function newCharacter(req, res) {

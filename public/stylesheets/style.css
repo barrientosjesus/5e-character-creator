@@ -343,8 +343,27 @@ footer {
   grid-column: 2 / 3;
   overflow-y: auto;
   padding: 1rem;
-  /* background-color: rgba(51, 51, 51, 0.6); */
-  background-color: rgba(129, 45, 168, .5);
+  background-color: rgba(51, 51, 51, .6);
+  filter: drop-shadow(10px 10px 10px #000);
+  color: white;
+  justify-items: center;
+}
+
+#show-controls {
+  display: grid;
+  grid-column: 3 / 4;
+  align-content: center;
+  justify-items: center;
+}
+
+#character-show>h1::before,
+#character-show>h1::after {
+  display: inline-block;
+  border-top: .3rem solid white;
+  content: "";
+  width: 4rem;
+  margin: 0 1rem;
+  transform: translateY(-.5rem);
 }
 
 /* CARD CSS BELOW */
@@ -479,7 +498,7 @@ footer {
 .card-body h2 {
   font-size: 1.8em;
   margin: 4px auto 12px;
-  color:white;
+  color: white;
 }
 
 .card-body p {
