@@ -38,7 +38,10 @@ async function show(req, res) {
 }
 
 async function edit(req, res) {
-    const character = await Character.findById(req.params.id);
+    const character = await Character.findOne({_id: req.params.id, user: req.user._id });
+    
+    if (!character) return res.redirect('/characters');
+
     const data = await API.compileData();
     res.render('characters/edit', {
         title: 'Edit Character',
@@ -48,14 +51,13 @@ async function edit(req, res) {
 }
 
 async function update(req, res) {
-    console.log(req.params.id, ' | ',req.body)
     req.body.abilityScores = await API.mergeArrays(req.body.abilityScores);
 
     try {
-        await Character.findOneAndUpdate({_id: req.params.id}, req.body);
-        res.redirect('/characters');
+        const updatedCharacter = await Character.findOneAndUpdate({_id: req.params.id, user: req.user._id}, req.body);
+        res.redirect(`/characters/${updatedCharacter._id}`);
     } catch (err) {
-        console.log(err);
+        console.log(err.message);
         res.redirect('/characters');
     }
 }
