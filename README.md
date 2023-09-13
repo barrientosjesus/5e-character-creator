@@ -43,11 +43,8 @@ This is a web app that allows you quickly create D&D Characters. Only has inform
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
-# Getting Started
+# Deploy Locally
 
-<details open>
-<summary>Deploy Locally</summary>
- 
 1. [Fork the repository](https://github.com/barrientosjesus/dnd5e-character-generator/fork)
 2. Clone your fork: `git clone https://github.com/your-username/dnd5e-character-generator.git`
 3. run `npm i`
@@ -61,8 +58,6 @@ GOOGLE_SECRET="YOUR GOOGLE SECRET"
 GOOGLE_CALLBACK="YOUR CALLBACK"
 SECRET="YOUR SECRET"
 ```
- 
-</details>
 
 # Next Steps
 
