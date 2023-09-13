@@ -75,9 +75,11 @@ async function deleteCharacter(req, res) {
 
 async function newCharacter(req, res) {
     const data = await API.compileData();
+
     res.render('characters/new', {
         allData: data,
-        title: "New Character"
+        title: "New Character",
+        errorMsg: ''
     });
 }
 
@@ -87,7 +89,6 @@ async function create(req, res) {
 
     try {
         await Character.create(req.body);
-
         res.redirect('/characters');
     } catch (err) {
         console.log(err);

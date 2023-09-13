@@ -131,6 +131,13 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
   justify-items: center;
 }
 
+#error-msg {
+ display: grid;
+ grid-column: 6 / 8;
+ grid-row: 6 / 7;
+ align-items: center;
+}
+
 #name-race-class {
   grid-row: 1 / 2;
   grid-template-columns: repeat(5, 1fr);
@@ -300,10 +307,18 @@ div.input-group>span.input-group-text {
   color: white;
 }
 
-#name-race-class>*,
-#backgrounds-alignments>* {
+#name-race-class>section,
+#backgrounds-alignments>section {
   display: grid;
   width: 50%;
+  justify-items: center;
+  color: white;
+}
+
+#name-race-class>section>input,
+#name-race-class>section>select,
+#backgrounds-alignments>section>select {
+  display: grid;
   color: white;
   background-color: rgba(51, 51, 51, 0.6);
 }
@@ -312,7 +327,11 @@ select.drop-down-arrow {
   background-image: url("data:image/svg+xml;charset=utf-8,<svg width='10' height='6' fill='none' xmlns='http:%2F%2Fwww.w3.org/2000/svg'><path d='M1 1l4 4 4-4' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
 }
 
-#name-race-class>input::placeholder {
+select.drop-down-arrow>option{
+  background-color: #333;
+}
+
+#name-race-class>section>input::placeholder {
   color: rgba(255, 255, 255, .4);
 }
 

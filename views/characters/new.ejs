@@ -3,41 +3,54 @@
   <main>
     <form action="/characters" method="POST" id="new-character-main">
       <section id="name-race-class" class="new-input-section">
-        <input class="form-control" type="text" name="name" id="new-name" placeholder="Character Name">
-        <select class="form-select drop-down-arrow" aria-label="Default select example" name="race" id="races">
-          <option disabled selected>Race</option>
-          <% for(const r of allData.races) { %>
-            <option value="<%= r.name %>">
-              <%= r.name %>
-            </option>
-            <% } %>
-        </select>
-        <select class="form-select drop-down-arrow" aria-label="Default select example" name="class" id="classes">
-          <option disabled selected>Class</option>
-          <% for(const c of allData.classes) { %>
-            <option value="<%= c.name %>">
-              <%= c.name %>
-            </option>
-            <% } %>
-        </select>
-        <select class="form-select drop-down-arrow" aria-label="Default select example" name="background"
-          id="backgrounds">
-          <option disabled selected>Background</option>
-          <% for(const b of allData.backgrounds) { %>
-            <option value="<%= b.name %>">
-              <%= b.name %>
-            </option>
-            <% } %>
-        </select>
-        <select class="form-select drop-down-arrow" aria-label="Default select example" name="alignment"
-          id="alignments">
-          <option disabled selected>Alignment</option>
-          <% for(const a of allData.alignments) { %>
-            <option value="<%= a.name %>">
-              <%= a.name %>
-            </option>
-            <% } %>
-        </select>
+        <section>
+          <label for="new-name">Character Name</label>
+          <input class="form-control" type="text" name="name" id="new-name" data-bs-theme="dark" placeholder="Character Name" required>
+        </section>
+        <section>
+          <label for="races">Race</label>
+          <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example" name="race" id="races"
+            required>
+            <% for(const r of allData.races) { %>
+              <option value="<%= r.name %>">
+                <%= r.name %>
+              </option>
+              <% } %>
+          </select>
+        </section>
+        <section>
+          <label for="classes">Class</label>
+          <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example" name="class" id="classes"
+            required>
+            <% for(const c of allData.classes) { %>
+              <option value="<%= c.name %>">
+                <%= c.name %>
+              </option>
+              <% } %>
+          </select>
+        </section>
+        <section>
+          <label for="background">Background</label>
+          <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example" name="background"
+            id="backgrounds" required>
+            <% for(const b of allData.backgrounds) { %>
+              <option value="<%= b.name %>">
+                <%= b.name %>
+              </option>
+              <% } %>
+          </select>
+        </section>
+        <section>
+          <label for="alignment">Alignment</label>
+          <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example" name="alignment"
+            id="alignments" required>
+            <% for(const a of allData.alignments) { %>
+              <option value="<%= a.name %>">
+                <%= a.name %>
+              </option>
+              <% } %>
+          </select>
+        </section>
       </section>
       <section id="skills-languages">
         <section id="proficiencies">
@@ -77,7 +90,7 @@
                 <%= as.name %>
               </span>
               <input type="number" class="form-control " name="abilityScores" min="1" step="1"
-                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
               <span class="input-group-text attribute-label" id="<%= as.name %>"></span>
             </div>
             <% }) %>
@@ -103,7 +116,15 @@
         </section>
       </section>
       <section id="submit-section">
-          <button type="submit" class="btn btn-success btn-lg" path="/">Create</button>
+        <button type="submit" class="btn btn-success btn-lg" path="/">Create</button>
+      </section>
+      <section id="error-msg">
+        <% if (errorMsg) { %>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <%= errorMsg %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <% } %>
       </section>
     </form>
   </main>
