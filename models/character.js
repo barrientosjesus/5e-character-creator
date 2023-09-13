@@ -19,8 +19,10 @@ const characterSchema = new Schema({
         type: String,
         required: true
     },
-    alignment: String,
-    hitDice: Number,
+    alignment:{
+        type: String,
+        required: true
+    },
     skills: [],
     languages: [],
     abilityScores: [],

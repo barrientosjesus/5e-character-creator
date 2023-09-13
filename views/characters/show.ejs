@@ -11,11 +11,11 @@
     <% if (user?._id.equals(character.user._id)) { %>
     <section id="show-controls">
       <form action="/characters/<%= character._id %>/edit" method="GET">
-        <button type="submit" class="btn btn-primary">EDIT</button>
+        <button type="submit" class="btn show-edit">EDIT</button>
       </form>
       <br>
       <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-danger">DELETE</button>
+        <button type="submit" class="btn show-delete">DELETE</button>
       </form>
       <% } %>
     </section>

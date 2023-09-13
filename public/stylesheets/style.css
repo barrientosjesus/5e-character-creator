@@ -600,6 +600,18 @@ footer {
   color: white;
 }
 
+form>.show-delete {
+  background-color: #611919;
+  color: white;
+  filter: drop-shadow(10px 10px 10px #000);
+}
+
+form>.show-edit {
+  background-color: #1a1063;
+  color: white;
+  filter: drop-shadow(10px 10px 10px #000);
+}
+
 /* Media Queries */
 @media (max-height: 1200px) {
   #ability-scores {

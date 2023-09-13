@@ -9,9 +9,7 @@
     const classData = <%- JSON.stringify(allData.classes) %>;
 
     races.addEventListener('change', handleRaceSelect);
-
     asMOD.addEventListener('change', updateAbilityScoreMods);
-
     classes.addEventListener('change', handleClassSelect);
 
     function updateAbilityScoreMods(evt) {
@@ -59,4 +57,6 @@
         document.getElementById('race-alignment').innerText = race.alignment;
         document.getElementById('race-traits').innerHTML = traitList.length > 0 ? traitList.join(', ') : 'None';
     }
+
+
 </script>
