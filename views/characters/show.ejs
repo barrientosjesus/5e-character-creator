@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
   <main id="character-show-page">
-    <section id="character-show">
+    <section id="character-show" style="background-color:rgba(<%= character.classColor %>, 0.5);">
+      <img src="<%= character.classIMG %>" alt="Class Picture" srcset="" id="show-img">
       <h1 style="color:<%= character.classColor %>;">
         <%= character.name %>
       </h1>
@@ -11,11 +12,13 @@
     <% if (user?._id.equals(character.user._id)) { %>
     <section id="show-controls">
       <form action="/characters/<%= character._id %>/edit" method="GET">
-        <button type="submit" class="btn show-edit">EDIT</button>
+        <button type="submit" class="btn show-edit"><span class="button-span"><i class="bi bi-pencil-square"></i> EDIT</span></button>
       </form>
       <br>
       <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
-        <button type="submit" class="btn show-delete">DELETE</button>
+        <button type="submit" class="btn show-delete">
+          <span class="button-span"><i class="bi bi-trash"></i> DELETE</span>
+        </button>
       </form>
       <% } %>
     </section>

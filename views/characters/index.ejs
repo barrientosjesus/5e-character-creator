@@ -42,7 +42,7 @@
             </div>
 
             <div class="card-body">
-              <span class="power" style="color:<%= c.classColor %>;">
+              <span class="power" style="color:rgba(<%= c.classColor %>, 1);">
                 <%= c.race %>&nbsp;<%= c.class %>
               </span>
               <h2>
@@ -53,7 +53,7 @@
               </p>
             </div>
 
-            <div class="card-footer" style="background-color:<%= c.classColor %>;">
+            <div class="card-footer" style="background-color:rgba(<%= c.classColor %>, 1);">
               <% for(const s of c.abilityScores) { %>
                 <div class="info">
                   <div class="value">

@@ -19,62 +19,62 @@ const BG_IMAGES = {
 
 const CLASS_LOOKUP = {
     Barbarian: {
-        color: "#E7623E",
+        color: "231, 98, 62",
         img: "https://i.imgur.com/GuZWwUQ.png",
         bgIMG: BG_IMAGES.BAD
     },
     Bard: {
-        color: "#AB6DAC",
+        color: "171, 109, 172",
         img: "https://i.imgur.com/pzUugz7.png",
         bgIMG: BG_IMAGES.GOOD
     },
     Cleric: {
-        color: "#91A1B2",
+        color: "145, 161, 178",
         img: "https://i.imgur.com/oYskm76.png",
         bgIMG: BG_IMAGES.GOOD
     },
     Druid: {
-        color: "#7A853B",
+        color: "122, 133, 59",
         img: "https://i.imgur.com/zn8XmCr.png",
         bgIMG: BG_IMAGES.GOOD
     },
     Fighter: {
-        color: "#51A5C5",
+        color: "127, 81, 62",
         img: "https://i.imgur.com/RuRMPrO.png",
         bgIMG: BG_IMAGES.BAD
     },
     Monk: {
-        color: "#51A5C5",
+        color: "81, 165, 197",
         img: "https://i.imgur.com/XtP5ekj.png",
         bgIMG: BG_IMAGES.GOOD
     },
     Paladin: {
-        color: "#B59E54",
+        color: "181, 158, 84",
         img: "https://i.imgur.com/HRDVdaV.png",
         bgIMG: BG_IMAGES.GOOD
     },
     Ranger: {
-        color: "#507F62",
+        color: "80, 127, 98",
         img: "https://i.imgur.com/TXuwZaH.png",
         bgIMG: BG_IMAGES.GOOD
     },
     Rogue: {
-        color: "#bfba2a",
+        color: "191, 186, 42",
         img: "https://i.imgur.com/x4qvZM6.png",
         bgIMG: BG_IMAGES.BAD
     },
     Sorcerer: {
-        color: "#992E2E",
+        color: "153, 46, 46",
         img: "https://i.imgur.com/8BCn1qu.png",
         bgIMG: BG_IMAGES.BAD
     },
     Warlock: {
-        color: "#7B469B",
+        color: "123, 70, 155",
         img: "https://i.imgur.com/UXPp1Qu.png",
         bgIMG: BG_IMAGES.BAD
     },
     Wizard: {
-        color: "#2A50A1",
+        color: "42, 80, 161",
         img: "https://i.imgur.com/ZTVfN4L.png",
         bgIMG: BG_IMAGES.BAD
     }
