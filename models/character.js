@@ -48,6 +48,10 @@ characterSchema.virtual('classColor').get(function () {
     return classColor;
 });
 
+characterSchema.virtual('favoritesCount').get(function () {
+    return this.favorites.length;
+});
+
 characterSchema.set('toJSON', { getters: true });
 
 module.exports = mongoose.model('Character', characterSchema);

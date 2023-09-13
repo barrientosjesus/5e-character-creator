@@ -12,8 +12,8 @@ require('./config/database');
 require('./config/passport');
 
 var indexRouter = require('./routes/index');
-var playersRouter = require('./routes/players');
 var charactersRouter = require('./routes/characters');
+var favoritesRouter = require('./routes/favorites');
 
 var app = express();
 
@@ -43,8 +43,8 @@ app.use(function(req, res, next) {
 })
 
 app.use('/', indexRouter);
-app.use('/players', playersRouter);
 app.use('/characters', charactersRouter);
+app.use('/', favoritesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -63,3 +63,5 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+

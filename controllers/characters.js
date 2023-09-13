@@ -18,8 +18,9 @@ async function index(req, res) {
     if (req.query.class) query.class = req.query.class;
 
     const characters = await Character.find(query);
-    const title = query.user ? 'My Characters'
-        : query.class ? `${query.class} Characters` : 'Characters';
+    characters.sort((a, b) => b.favoritesCount - a.favoritesCount);
+
+    const title = query.user ? 'My Characters' : query.class ? `${query.class} Characters` : 'Characters';
 
     res.render('characters/index', {
         characters: characters,
@@ -30,7 +31,7 @@ async function index(req, res) {
 
 async function show(req, res) {
     const character = await Character.findById(req.params.id).populate('user').populate('favorites');
-    
+
     res.render('characters/show', {
         title: `Character | ${character.name}`,
         character
@@ -38,8 +39,8 @@ async function show(req, res) {
 }
 
 async function edit(req, res) {
-    const character = await Character.findOne({_id: req.params.id, user: req.user._id });
-    
+    const character = await Character.findOne({ _id: req.params.id, user: req.user._id });
+
     if (!character) return res.redirect('/characters');
 
     const data = await API.compileData();
@@ -47,14 +48,14 @@ async function edit(req, res) {
         title: 'Edit Character',
         allData: data,
         character
-    })
+    });
 }
 
 async function update(req, res) {
     req.body.abilityScores = await API.mergeArrays(req.body.abilityScores);
 
     try {
-        const updatedCharacter = await Character.findOneAndUpdate({_id: req.params.id, user: req.user._id}, req.body);
+        const updatedCharacter = await Character.findOneAndUpdate({ _id: req.params.id, user: req.user._id }, req.body);
         res.redirect(`/characters/${updatedCharacter._id}`);
     } catch (err) {
         console.log(err.message);
@@ -64,7 +65,7 @@ async function update(req, res) {
 
 async function deleteCharacter(req, res) {
     try {
-        await Character.deleteOne({_id: req.params.id});
+        await Character.deleteOne({ _id: req.params.id });
         res.redirect('/characters');
     } catch (err) {
         console.log(err);
