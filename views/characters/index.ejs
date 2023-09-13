@@ -37,19 +37,19 @@
       <% if(characters) { %>
         <% for(const c of characters) { %>
           <div class="card">
-            <div class="card-image">
-              <img src="https://cdn.midjourney.com/1371a8b3-8317-48f3-8107-3e012e15bbea/0_2.webp" alt="Character">
+            <div class="card-image" style="background:url(<%= c.cardBG %>);">
+              <img src="<%= c.classIMG %>" alt="Character">
             </div>
 
             <div class="card-body">
               <span class="power" style="color:<%= c.classColor %>;">
-                <%= c.class %>
+                <%= c.race %>&nbsp;<%= c.class %>
               </span>
               <h2>
                 <%= c.name %>
               </h2>
               <p>
-                <%= c.classColor %>
+                <%= c.alignment %>
               </p>
             </div>
 

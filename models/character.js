@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { COLORS } = require('../public/javascripts/lookups');
+const { CLASS_LOOKUP, IMAGES } = require('../public/javascripts/lookups');
 
 const characterSchema = new Schema({
     name: {
@@ -44,13 +44,22 @@ characterSchema.virtual('ac').get(function () {
 
 characterSchema.virtual('classColor').get(function () {
     const charClass = this.class;
-    const classColor = COLORS[charClass];
+    const classColor = CLASS_LOOKUP[charClass].color;
     return classColor;
 });
+
+characterSchema.virtual('classIMG').get(function() {
+    const charClass = this.class;
+    return CLASS_LOOKUP[charClass].img;
+})
 
 characterSchema.virtual('favoritesCount').get(function () {
     return this.favorites.length;
 });
+
+characterSchema.virtual('cardBG').get(function() {
+    return IMAGES[Math.floor(Math.random() * IMAGES.length)];
+})
 
 characterSchema.set('toJSON', { getters: true });
 
