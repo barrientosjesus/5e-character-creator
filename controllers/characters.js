@@ -93,6 +93,7 @@ async function create(req, res) {
         console.log(err);
         res.render('characters/new', {
             title: 'New Character',
+            allData: await API.compileData(),
             errorMsg: err.message
         });
     }
