@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { CLASS_LOOKUP, IMAGES } = require('../public/javascripts/lookups');
+const { CLASS_LOOKUP } = require('../public/javascripts/lookups');
 
 const characterSchema = new Schema({
     name: {
@@ -53,13 +53,14 @@ characterSchema.virtual('classIMG').get(function() {
     return CLASS_LOOKUP[charClass].img;
 })
 
+characterSchema.virtual('cardBG').get(function() {
+    const charClass = this.class;
+    return CLASS_LOOKUP[charClass].bgIMG[Math.floor(Math.random() * CLASS_LOOKUP[charClass].bgIMG.length)];
+})
+
 characterSchema.virtual('favoritesCount').get(function () {
     return this.favorites.length;
 });
-
-characterSchema.virtual('cardBG').get(function() {
-    return IMAGES[Math.floor(Math.random() * IMAGES.length)];
-})
 
 characterSchema.set('toJSON', { getters: true });
 
