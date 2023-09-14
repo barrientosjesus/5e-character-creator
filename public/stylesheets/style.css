@@ -746,6 +746,11 @@ form>.show-edit:hover {
   display: grid;
   color: white;
   justify-items: center;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+#show-skills>section>* {
+  margin: 0;
 }
 
 /* Media Queries */
