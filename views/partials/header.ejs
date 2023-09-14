@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a class="nav-link <%= title === 'Characters' && 'active' %>" aria-current="page"
+                        <a class="nav-link <%= /^(?!My Characters$)(?:Barbarian |Bard |Cleric |Druid |Fighter |Monk |Paladin |Ranger |Rogue |Sorcerer |Warlock |Wizard )?Characters$/.test(title) && 'active' %>" aria-current="page"
                             href="/characters">Characters</a>
                     </li>
                     <% if (user) { %>
