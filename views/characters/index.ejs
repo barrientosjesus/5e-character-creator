@@ -3,6 +3,7 @@
   <main id="characters-main">
     <section id="index-filter">
       <div>
+        <% if (title !== 'My Characters') { %>
         <h5 class="text-center">Class Filter</h5>
         <ul class="list-group">
           <li class="list-group-item <%= title === 'Characters' ? 'active' : '' %>"><a href="/characters">All</a></li>
@@ -31,6 +32,7 @@
           <li class="list-group-item <%= title === 'Wizard Characters' ? 'active' : '' %>"><a
               href="/characters?class=Wizard">Wizard</a></li>
         </ul>
+        <% } %>
       </div>
     </section>
     <section id="show-characters">
