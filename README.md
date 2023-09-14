@@ -59,12 +59,11 @@ GOOGLE_CALLBACK="YOUR CALLBACK"
 SECRET="YOUR SECRET"
 ```
 
-# Next Steps
+# Next Steps - [Trello](https://trello.com/b/xVkuw9Eh/project-2)
 
 - [ ] Image Upload for Character Portrait
 - [ ] Additional Character stats to Model
 - [ ] Additional filters and sort options
-- [ ] Make ships draggable after placement
 - [ ] Export to PDF
 - [ ] Export to Roll20 & FoundryVTT
 
