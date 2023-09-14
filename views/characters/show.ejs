@@ -10,9 +10,21 @@
             <%= character.name %>
           </h3>
           <section id="show-icons">
+            <i class="bi bi-heart-fill">
+              <%= character.health %>
+            </i>
+            &nbsp;•&nbsp;
             <i class="bi bi-shield-fill">
               <%= character.ac %>
             </i>
+          </section>
+          <section>
+            <em>
+              <% character.languages.slice(0, 3).forEach((lang, idx) => { %>
+                <%= lang %><%= idx < character.languages.length - 1 ? ', ' : '' %>
+              <% }) %>
+              <em><%= character.languages.length > 3 ? '...' : '' %></em>
+            </em>
           </section>
         </section>
         <section class="text-white" id="show-misc-info" style="background-color:rgba(<%= character.classColor %>,0.9);">

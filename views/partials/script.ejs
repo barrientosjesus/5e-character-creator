@@ -26,6 +26,8 @@
         const classChosen = classData.find(el => el.name === evt.target.value);
         const startingEquipmentParent = document.getElementById('class-starting-items');
         const profChoices = document.getElementById('class-prof-choices');
+        const hitDieEl = document.getElementById('hitdie');
+        hitDieEl.value = classChosen.hit_die;
         startingEquipmentParent.innerHTML = '';
         classChosen.starting_equipment_options.forEach(el => equipmentList.push(el));
         profChoices.innerText = classChosen.proficiency_choices[0].desc;

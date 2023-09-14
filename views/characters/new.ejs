@@ -11,6 +11,7 @@
           <label for="races">Race</label>
           <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example" name="race" id="races"
             required>
+            <option value="" disabled selected>Race</option>
             <% for(const r of allData.races) { %>
               <option value="<%= r.name %>">
                 <%= r.name %>
@@ -18,10 +19,12 @@
               <% } %>
           </select>
         </section>
+        <input type="hidden" name="hitDie" value="" id="hitdie">
         <section>
           <label for="classes">Class</label>
           <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example" name="class" id="classes"
             required>
+            <option value="" disabled selected>Class</option>
             <% for(const c of allData.classes) { %>
               <option value="<%= c.name %>">
                 <%= c.name %>
@@ -33,6 +36,7 @@
           <label for="background">Background</label>
           <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example" name="background"
             id="backgrounds" required>
+            <option value="" disabled selected>Background</option>
             <% for(const b of allData.backgrounds) { %>
               <option value="<%= b.name %>">
                 <%= b.name %>
@@ -44,6 +48,7 @@
           <label for="alignment">Alignment</label>
           <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example" name="alignment"
             id="alignments" required>
+            <option value="" disabled selected>Alignment</option>
             <% for(const a of allData.alignments) { %>
               <option value="<%= a.name %>">
                 <%= a.name %>

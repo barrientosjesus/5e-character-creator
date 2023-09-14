@@ -31,8 +31,8 @@ async function index(req, res) {
 
 async function show(req, res) {
     const character = await Character.findById(req.params.id).populate('user').populate('favorites');
+    console.log(character.abilityScores[0].mod);
     const skillList = await API.getSkills();
-    character.abilityScores.forEach(el => el.mod = Math.floor((el.score - 10) / 2));
     for (const skill of skillList) {
         const skillASName = skill.ability_score.name;
         const skillName = skill.name;
@@ -68,6 +68,7 @@ async function edit(req, res) {
 
 async function update(req, res) {
     req.body.abilityScores = await API.mergeArrays(req.body.abilityScores);
+    req.body.abilityScores.forEach(el => el.mod = Math.floor((el.score - 10) / 2));
 
     try {
         const updatedCharacter = await Character.findOneAndUpdate({ _id: req.params.id, user: req.user._id }, req.body);
