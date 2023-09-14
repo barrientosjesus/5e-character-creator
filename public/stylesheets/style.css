@@ -172,6 +172,7 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
   justify-items: center;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  max-width: 480px;
 }
 
 #ability-scores>h2 {
@@ -181,9 +182,11 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
 }
 
 #ability-scores>#score-list>div.input-group {
-  display: flex;
-  flex-wrap: nowrap;
-  width: 75%;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  justify-items: center;
 }
 
 #ability-scores>#score-list>div.input-group>.form-control {
@@ -200,7 +203,6 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
-  align-items: end;
   width: 100%;
   padding: 1rem;
 }
@@ -211,7 +213,7 @@ nav>.container-fluid>.collapse>ul>li>a:hover {
   grid-row: 2 / 3;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
-  width: 90%;
+  width: 100%;
   color: white;
 }
 
@@ -354,6 +356,7 @@ footer {
 #show-controls {
   display: grid;
   grid-column: 3 / 4;
+  grid-row: 6 / 7;
   align-content: center;
   justify-items: center;
 }
@@ -644,9 +647,9 @@ form>.show-edit:hover {
   display: grid;
   align-items: center;
   grid-column: 2 / 5;
-  grid-row: 2 / 5;
+  grid-row: 2 / 6;
   grid-template-columns: repeat(3, 33.33%);
-  grid-template-rows: repeat(3, 33.33%);
+  grid-template-rows: repeat(4, 25%);
   height: 100%;
   width: 100%;
   filter: drop-shadow(10px 10px 10px #000);
@@ -724,18 +727,16 @@ form>.show-edit:hover {
 #show-footer {
   display: grid;
   grid-column: 1 / 4;
-  grid-row: 3 / 4;
+  grid-row: 3 / 5;
   height: 100%;
   width: 100%;
   background-color: #333;
-  grid-template-rows: 1fr 4fr;
   justify-items: center;
 }
 
 #show-skills {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
   height: 100%;
   width: 100%;
   justify-items: center;
@@ -743,17 +744,37 @@ form>.show-edit:hover {
 }
 
 #show-skills>* {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   color: white;
-  justify-items: center;
-  grid-template-rows: repeat(3, 1fr);
 }
 
 #show-skills>section>* {
   margin: 0;
+  text-align: center;
+}
+
+footer>a {
+  text-decoration: none;
+  color: white;
 }
 
 /* Media Queries */
+@media (max-width: 820px) {
+  #show-page-character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-row: 1 / 7;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  #show-controls {
+    grid-column: 5 / 6;
+    grid-row: 6 / 7;
+  }
+}
+
 @media (max-height: 1200px) {
   #ability-scores {
     display: grid;
@@ -789,6 +810,14 @@ form>.show-edit:hover {
 
   #name-race-class>* {
     margin: 0.5rem;
+  }
+
+  #show-page-character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-row: 1 / 7;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
 

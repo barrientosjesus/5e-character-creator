@@ -84,19 +84,32 @@
         </section>
       </section>
       <section id="show-footer">
-        <h6 class="text-white">SKILLS</h6>
         <section id="show-skills">
           <% for(const s of skillList) { %>
             <section>
               <h6>
                 <%= s.name %>
               </h6>
-              <h6><%= s.ability_score.name %></h6>
-              <h6><%= s.ability_score.mod >= 0 ? `+${s.ability_score.mod}` : s.ability_score.mod %></h6>
+              <h6>
+                <%= s.ability_score.name %>
+              </h6>
+              <h6>
+                <%= s.ability_score.mod>= 0 ? `+${s.ability_score.mod}` : s.ability_score.mod %>
+              </h6>
             </section>
             <% } %>
         </section>
       </section>
     </div>
+    <% if (user?._id.equals(character.user._id)) { %>
+      <section id="show-controls">
+        <form action="/characters/<%= character._id %>/edit" method="GET">
+          <button type="submit" class="btn show-edit">EDIT</button>
+        </form>
+        <br>
+        <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="btn show-delete">DELETE</button>
+        </form>
+        <% } %>
   </main>
   <%- include('../partials/footer') %>

@@ -57,8 +57,8 @@
           <h2>Proficiencies</h2>
           <% allData.skills.forEach((s, idx)=> { %>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="<%= s.name %>" id="flexCheckDefault" name="skills">
-              <label class="form-check-label" for="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" value="<%= s.name %>" id="flexCheckDefault<%= idx %>s" name="skills">
+              <label class="form-check-label" for="flexCheckDefault<%= idx %>s">
                 <%= s.name %>
               </label>
             </div>
@@ -68,9 +68,9 @@
           <h2>Languages</h2>
           <% allData.languages.forEach((l, idx)=> { %>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="<%= l.name %>" id="flexCheckDefault"
+              <input class="form-check-input" type="checkbox" value="<%= l.name %>" id="flexCheckDefault<%= idx %>l"
                 name="languages">
-              <label class="form-check-label" for="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault<%= idx %>l">
                 <%= l.name %>
               </label>
             </div>

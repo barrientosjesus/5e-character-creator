@@ -3,42 +3,54 @@
   <main>
     <form action="/characters/<%= character._id %>?_method=PUT" method="POST" id="new-character-main">
       <section id="name-race-class" class="new-input-section">
-        <input class="form-control" type="text" name="name" id="new-name" placeholder="Character Name"
-          value="<%= character.name %>">
-        <select class="form-select drop-down-arrow" aria-label="Default select example" name="race" id="races">
-          <option disabled selected>Race</option>
-          <% for(const r of allData.races) { %>
-            <option value="<%= r.name %>" <%=r.name===character.race ? 'selected' : '' %>>
-              <%= r.name %>
-            </option>
-            <% } %>
-        </select>
-        <select class="form-select drop-down-arrow" aria-label="Default select example" name="class" id="classes">
-          <option disabled selected>Class</option>
-          <% for(const c of allData.classes) { %>
-            <option value="<%= c.name %>" <%=c.name===character.class ? 'selected' : '' %>>
-              <%= c.name %>
-            </option>
-            <% } %>
-        </select>
-        <select class="form-select drop-down-arrow" aria-label="Default select example" name="background"
-          id="backgrounds">
-          <option disabled selected>Background</option>
-          <% for(const b of allData.backgrounds) { %>
-            <option value="<%= b.name %>" <%=b.name===character.background ? 'selected' : '' %>>
-              <%= b.name %>
-            </option>
-            <% } %>
-        </select>
-        <select class="form-select drop-down-arrow" aria-label="Default select example" name="alignment"
-          id="alignments">
-          <option disabled selected>Alignment</option>
-          <% for(const a of allData.alignments) { %>
-            <option value="<%= a.name %>" <%=a.name===character.alignment ? 'selected' : '' %>>
-              <%= a.name %>
-            </option>
-            <% } %>
-        </select>
+        <section>
+          <input class="form-control" data-bs-theme="dark" type="text" name="name" id="new-name"
+            placeholder="Character Name" value="<%= character.name %>">
+        </section>
+        <section>
+          <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example"
+            name="race" id="races">
+            <option disabled selected>Race</option>
+            <% for(const r of allData.races) { %>
+              <option value="<%= r.name %>" <%=r.name===character.race ? 'selected' : '' %>>
+                <%= r.name %>
+              </option>
+              <% } %>
+          </select>
+        </section>
+        <section>
+          <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example"
+            name="class" id="classes">
+            <option disabled selected>Class</option>
+            <% for(const c of allData.classes) { %>
+              <option value="<%= c.name %>" <%=c.name===character.class ? 'selected' : '' %>>
+                <%= c.name %>
+              </option>
+              <% } %>
+          </select>
+        </section>
+        <section>
+          <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example"
+            name="background" id="backgrounds">
+            <option disabled selected>Background</option>
+            <% for(const b of allData.backgrounds) { %>
+              <option value="<%= b.name %>" <%=b.name===character.background ? 'selected' : '' %>>
+                <%= b.name %>
+              </option>
+              <% } %>
+          </select>
+        </section>
+        <section>
+          <select class="form-select drop-down-arrow" data-bs-theme="dark" aria-label="Default select example"
+            name="alignment" id="alignments">
+            <option disabled selected>Alignment</option>
+            <% for(const a of allData.alignments) { %>
+              <option value="<%= a.name %>" <%=a.name===character.alignment ? 'selected' : '' %>>
+                <%= a.name %>
+              </option>
+              <% } %>
+          </select>
+        </section>
       </section>
       <section id="skills-languages">
         <section id="proficiencies">
@@ -79,7 +91,8 @@
                 <%= as.name %>
               </span>
               <input type="number" class="form-control " name="abilityScores" min="1" step="1"
-                onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<%= character.abilityScores[idx].score %>">
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                value="<%= character.abilityScores[idx].score %>">
               <span class="input-group-text attribute-label" id="<%= as.name %>"></span>
             </div>
             <% }) %>
@@ -87,36 +100,44 @@
       </section>
       <section id="new-info">
         <section style="opacity: 1;">
-          <h3>Race Age:</h3><span id="race-age"><%= allData.races.find(el => el.name === character.race)?.age %></span>
+          <h3>Race Age:</h3><span id="race-age">
+            <%= allData.races.find(el=> el.name === character.race)?.age %>
+          </span>
         </section>
         <section style="opacity: 1;">
-          <h3>Race Alignment:</h3><span id="race-alignment"><%= allData.races.find(el => el.name === character.race)?.alignment %></span>
+          <h3>Race Alignment:</h3><span id="race-alignment">
+            <%= allData.races.find(el=> el.name === character.race)?.alignment %>
+          </span>
         </section>
         <section style="opacity: 1;">
           <h3>Race Traits:</h3><span id="race-traits">
-            <% const race = allData.races.find(el => el.name === character.race); %>
-            <% race.traits.forEach((el, idx) => { %>
-              <%= el.name %><%= idx < race.traits.length - 1 ? ' | ' : '' %>
-            <% }) %>
+            <% const race=allData.races.find(el=> el.name === character.race); %>
+              <% race.traits.forEach((el, idx)=> { %>
+                <%= el.name %>
+                  <%= idx < race.traits.length - 1 ? ' | ' : '' %>
+                    <% }) %>
           </span>
         </section>
         <section style="opacity: 1;">
           <h3>Starting Equipment Options:</h3>
-          <% const classChoice = allData.classes.find(el => el.name === character.class); %>
-          <ul id="class-starting-items">
-            <% classChoice.starting_equipment_options.forEach(el => { %>
-              <li><%= el.desc %></li>
-            <% }) %>
-            <ul>
+          <% const classChoice=allData.classes.find(el=> el.name === character.class); %>
+            <ul id="class-starting-items">
+              <% classChoice.starting_equipment_options.forEach(el=> { %>
+                <li>
+                  <%= el.desc %>
+                </li>
+                <% }) %>
+                  <ul>
         </section>
         <section style="opacity: 1;">
           <h3>Class Proficiency Choices:</h3><span id="class-prof-choices">
-            <%= classChoice.name !== 'Bard' ? classChoice.proficiency_choices[0].desc : classChoice.proficiency_choices[1].desc %>
+            <%= classChoice.name !=='Bard' ? classChoice.proficiency_choices[0].desc :
+              classChoice.proficiency_choices[1].desc %>
           </span>
         </section>
       </section>
       <section id="submit-section">
-          <button type="submit" class="btn btn-primary btn-lg" path="/">Update</button>
+        <button type="submit" class="btn btn-primary btn-lg" path="/">Update</button>
       </section>
     </form>
   </main>

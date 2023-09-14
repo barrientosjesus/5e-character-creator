@@ -46,7 +46,6 @@ async function show(req, res) {
             skill.ability_score.mod += 2;
         }
     }
-    console.log(skillList);
     res.render('characters/show', {
         title: `Character | ${character.name}`,
         character,
@@ -81,7 +80,7 @@ async function update(req, res) {
 
 async function deleteCharacter(req, res) {
     try {
-        await Character.deleteOne({ _id: req.params.id });
+        await Character.deleteOne({ _id: req.params.id, user: req.user._id });
         res.redirect('/characters');
     } catch (err) {
         console.log(err);
