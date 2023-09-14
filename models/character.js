@@ -11,6 +11,12 @@ const characterSchema = new Schema({
         type: String,
         required: true
     },
+    level: {
+        type: Number,
+        default: 1,
+        min: 1,
+        max: 20
+    },
     class: {
         type: String,
         required: true
@@ -63,6 +69,10 @@ characterSchema.virtual('cardBG').get(function() {
 characterSchema.virtual('favoritesCount').get(function () {
     return this.favorites.length;
 });
+
+characterSchema.virtual('proficencyBonus').get(function() {
+    return 2 + ((this.level - 1) / 4)
+})
 
 characterSchema.set('toJSON', { getters: true });
 

@@ -67,7 +67,7 @@
             </div>
 
             <div class="selector">
-              <a href="/characters/<%= c._id %>" style="background-color:<%= c.classColor %>;">SHOW</a>
+              <a href="/characters/<%= c._id %>" style="background-color:rgba(<%= c.classColor %>, 1);">SHOW</a>
               <br>
               <% if(user) { %>
                 <form

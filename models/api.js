@@ -21,7 +21,8 @@ module.exports = {
     getClasses,
     getData,
     getAbilityScores,
-    mergeArrays
+    mergeArrays,
+    getSkills
 };
 
 async function getClasses() {

@@ -18,7 +18,7 @@ async function index(req, res) {
     if (req.query.class) query.class = req.query.class;
 
     const characters = await Character.find(query);
-    characters.sort((a, b) => b.favoritesCount - a.favoritesCount);
+    characters.sort((a, b) => b.favoritesCount - a.favoritesCount);;
 
     const title = query.user ? 'My Characters' : query.class ? `${query.class} Characters` : 'Characters';
 
@@ -31,10 +31,26 @@ async function index(req, res) {
 
 async function show(req, res) {
     const character = await Character.findById(req.params.id).populate('user').populate('favorites');
+    const skillList = await API.getSkills();
+    character.abilityScores.forEach(el => el.mod = Math.floor((el.score - 10) / 2));
+    for (const skill of skillList) {
+        const skillASName = skill.ability_score.name;
+        const skillName = skill.name;
+        const matchingAbilityScore = character.abilityScores.find((score) => score.name === skillASName);
 
+        if (matchingAbilityScore) {
+            skill.ability_score.mod = matchingAbilityScore.mod;
+        }
+
+        if (character.skills.includes(skillName)) {
+            skill.ability_score.mod += 2;
+        }
+    }
+    console.log(skillList);
     res.render('characters/show', {
         title: `Character | ${character.name}`,
-        character
+        character,
+        skillList
     });
 }
 
@@ -88,8 +104,8 @@ async function create(req, res) {
     req.body.user = req.user._id;
 
     try {
-        await Character.create(req.body);
-        res.redirect('/characters');
+        const newCharacter = await Character.create(req.body);
+        res.redirect(`/characters/${newCharacter._id}`);
     } catch (err) {
         console.log(err);
         res.render('characters/new', {

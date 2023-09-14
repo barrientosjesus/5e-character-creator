@@ -1,26 +1,105 @@
 <%- include('../partials/header') %>
-  <main id="character-show-page">
-    <section id="character-show" style="background-color:rgba(<%= character.classColor %>, 0.5);">
-      <img src="<%= character.classIMG %>" alt="Class Picture" srcset="" id="show-img">
-      <h1 style="color:<%= character.classColor %>;">
-        <%= character.name %>
-      </h1>
-      <h3 style="color:<%= character.classColor %>;">
-        <%= character.class %>
-      </h3>
-    </section>
-    <% if (user?._id.equals(character.user._id)) { %>
-    <section id="show-controls">
-      <form action="/characters/<%= character._id %>/edit" method="GET">
-        <button type="submit" class="btn show-edit"><span class="button-span"><i class="bi bi-pencil-square"></i> EDIT</span></button>
-      </form>
-      <br>
-      <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
-        <button type="submit" class="btn show-delete">
-          <span class="button-span"><i class="bi bi-trash"></i> DELETE</span>
-        </button>
-      </form>
-      <% } %>
-    </section>
+  <main id="show-page-main">
+    <div id="show-page-character">
+      <section id="show-page-image-section" style="background:url('<%= character.cardBG %>')">
+        <div id="show-page-image" style="background:url('<%= character.classIMG %>')"></div>
+      </section>
+      <section id="show-card-info">
+        <section class="text-white" id="show-header">
+          <h3 class="">
+            <%= character.name %>
+          </h3>
+          <section id="show-icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-google"></i>
+            <i class="fa fa-youtube-play"></i>
+            <i class="fa fa-dribbble"></i>
+            <i class="bi bi-shield-fill">
+              <%= character.ac %>
+            </i>
+          </section>
+        </section>
+        <section class="text-white" id="show-misc-info" style="background-color:rgba(<%= character.classColor %>,0.9);">
+          <section id="show-raceclass">
+            <h6>
+              <%= character.race %>&nbsp;<%= character.class %>
+            </h6>
+          </section>
+          <section id="show-background">
+            <h6>
+              <%= character.background %>
+            </h6>
+          </section>
+          <section id="show-alignment">
+            <h6>
+              <%= character.alignment %>
+            </h6>
+          </section>
+        </section>
+        <section class="text-white" id="show-ability-scores">
+          <div class="bg-primary" style="--bs-bg-opacity: .5;">
+            <h4>
+              <%= character.abilityScores[4].score %>
+            </h4>
+            <h6>
+              <%= character.abilityScores[4].name %>
+            </h6>
+          </div>
+          <div class="bg-success" style="--bs-bg-opacity: .5;">
+            <h4>
+              <%= character.abilityScores[2].score %>
+            </h4>
+            <h6>
+              <%= character.abilityScores[2].name %>
+            </h6>
+          </div>
+          <div class="bg-warning" style="--bs-bg-opacity: .5;">
+            <h4>
+              <%= character.abilityScores[1].score %>
+            </h4>
+            <h6>
+              <%= character.abilityScores[1].name %>
+            </h6>
+          </div>
+          <div class="bg-danger" style="--bs-bg-opacity: .5;">
+            <h4>
+              <%= character.abilityScores[3].score %>
+            </h4>
+            <h6>
+              <%= character.abilityScores[3].name %>
+            </h6>
+          </div>
+          <div class="bg-dark" style="--bs-bg-opacity: .5;">
+            <h4>
+              <%= character.abilityScores[5].score %>
+            </h4>
+            <h6>
+              <%= character.abilityScores[5].name %>
+            </h6>
+          </div>
+          <div class="bg-info" style="--bs-bg-opacity: .5;">
+            <h4>
+              <%= character.abilityScores[0].score %>
+            </h4>
+            <h6>
+              <%= character.abilityScores[0].name %>
+            </h6>
+          </div>
+        </section>
+      </section>
+      <section id="show-footer">
+        <h6 class="text-white">SKILLS</h6>
+        <section id="show-skills">
+          <% for(const s of skillList) { %>
+            <section>
+              <h6>
+                <%= s.name %>
+              </h6>
+              <h6><%= s.ability_score.mod >= 0 ? `+${s.ability_score.mod}` : s.ability_score.mod %></h6>
+            </section>
+            <% } %>
+        </section>
+      </section>
+    </div>
   </main>
   <%- include('../partials/footer') %>
