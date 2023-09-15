@@ -48,6 +48,10 @@ nav>.container-fluid>a>img {
   height: 100%;
 }
 
+.logo-bg-glow {
+  filter: drop-shadow(0 0 15px var(--main-el-color));
+}
+
 nav>.container-fluid>.collapse>ul>li>a {
   text-decoration: none;
   color: white;
