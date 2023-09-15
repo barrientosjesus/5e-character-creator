@@ -42,6 +42,10 @@ This is a web app that allows you quickly create D&D Characters. Only has inform
 ![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white)
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
+![Static Badge](https://img.shields.io/badge/MidJourney-blue?style=flat-square&label=MJ&color=%238c2bbd&link=https%3A%2F%2Fwww.midjourney.com%2Fapp%2F)
+![Static Badge](https://img.shields.io/badge/Imgur%20-%20%23333?style=flat-square&logo=imgur&label=Imgur)
+![MDN Web Docs](https://img.shields.io/badge/MDN_Web_Docs-black?style=for-the-badge&logo=mdnwebdocs&logoColor=white)
+
 
 # Deploy Locally
 
