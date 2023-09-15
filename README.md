@@ -17,7 +17,7 @@
 <div align="center" id="socialbuttons">
 
   ![Stars](https://img.shields.io/github/stars/barrientosjesus/dnd5e-character-generator?style=social)
-  ![](https://visitor-badge.laobi.icu/badge?page_id=barrientosjesus.dnd5e-character-generator)
+  ![visitors](https://visitor-badge.laobi.icu/badge?page_id=barrientosjesus.5e-character-creator)
   ![Forks](https://img.shields.io/github/forks/barrientosjesus/dnd5e-character-generator?style=social)
   <br>
   ![Version](https://img.shields.io/badge/version-1.0-black)
@@ -52,7 +52,6 @@ This is a web app that allows you quickly create D&D Characters. Only has inform
 ![Static Badge](https://img.shields.io/badge/MidJourney-blue?style=flat-square&label=MJ&color=%238c2bbd&link=https%3A%2F%2Fwww.midjourney.com%2Fapp%2F)
 ![Static Badge](https://img.shields.io/badge/Imgur%20-%20%23333?style=flat-square&logo=imgur&label=Imgur)
 ![MDN Web Docs](https://img.shields.io/badge/MDN_Web_Docs-black?style=for-the-badge&logo=mdnwebdocs&logoColor=white)
-![TEST](https://badgen.net/http:/localhost:3000/api/character_count)
 
 # Deploy Locally
 
