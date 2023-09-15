@@ -759,6 +759,10 @@ footer>a {
   color: white;
 }
 
+footer>span>a {
+  color: white;
+}
+
 /* Media Queries */
 @media (max-width: 820px) {
   #show-page-character {

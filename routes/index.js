@@ -20,7 +20,6 @@ router.get('/oauth2callback', function (req, res, next) {
   passport.authenticate(
     'google',
     {
-      // Replace '/movies' with your project's default redirect
       successRedirect: redirectTo || '/',
       failureRedirect: '/'
     }
