@@ -1,3 +1,31 @@
+<script>
+    window.onload = randomPicture;
+    const heroImage = [
+      "https://svgshare.com/i/xLx.svg",
+      "https://i.imgur.com/9i4IA3u.png",
+      "https://i.imgur.com/rXVFq1e.png",
+      "https://i.imgur.com/LLYtS8y.png"
+    ];
+
+    const backgroundImage = [
+      "https://i.imgur.com/BuUWNkn.png",
+      "https://i.imgur.com/Z4A3x8n.png",
+      "https://i.imgur.com/yXlwMWr.png",
+      "https://i.imgur.com/FdqsRnH.png",
+      "https://i.imgur.com/FB4HXpk.png",
+      "https://i.imgur.com/cClTMmz.png",
+      "https://i.imgur.com/g6Rv3cU.png"
+    ]
+
+    function randomPicture() {
+      const randomIdx = Math.floor(Math.random() * heroImage.length);
+      const bodyEl = document.querySelector('body');
+      const heroImageEl = document.getElementById('hero-img');
+      bodyEl.style.background = `url(${backgroundImage[randomIdx]})`;
+      bodyEl.style.backgroundSize = 'cover';
+      if (heroImageEl) heroImageEl.src = heroImage[randomIdx];
+    }
+</script>
 <footer><a href="https://www.linkedin.com/in/barrientosjesus/" target="_blank">&copy; 2023 Jesus Barrientos</a>&nbsp;•&nbsp;<span><a href="https://www.freeprivacypolicy.com/live/63c07718-d658-4eaf-8ef5-463be08b8607" target="_blank">Privacy Policy</a></span>&nbsp;•&nbsp;<span><a href="https://www.cookiepolicygenerator.com/live.php?token=VhSWdejdRAycTPnX7sRFBYvwYk8zujl2" target="_blank">Cookie Policy</a></span></footer>
 </body>
 </html>

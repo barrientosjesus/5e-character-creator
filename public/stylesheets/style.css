@@ -24,7 +24,6 @@ body {
   display: grid;
   flex-direction: column;
   font: 14px 'Roboto', Helvetica, Arial, sans-serif;
-  background: url('https://i.imgur.com/BuUWNkn.png');
   background-size: cover;
   grid-template-rows: 6vh 92vh 2vh;
 }
