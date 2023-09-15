@@ -14,6 +14,7 @@ require('./config/passport');
 var indexRouter = require('./routes/index');
 var charactersRouter = require('./routes/characters');
 var favoritesRouter = require('./routes/favorites');
+var apisRouter = require('./routes/apis');
 
 var app = express();
 
@@ -37,14 +38,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
-})
+});
 
 app.use('/', indexRouter);
 app.use('/characters', charactersRouter);
 app.use('/', favoritesRouter);
+app.use('/api', apisRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

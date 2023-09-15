@@ -5,10 +5,12 @@
 </div>
 
 <div align="center" id="header">
-   
+
 # 5e Character Creator
+
 **Created by [Jesus Barrientos](https://www.linkedin.com/in/barrientosjesus/)**
-#### [CLICK TO VIEW](https://dnd5e-character-creator-83a7088f4a41.herokuapp.com/) 
+
+#### [CLICK TO VIEW](https://dnd5e-character-creator-83a7088f4a41.herokuapp.com/)
 
 </div>
 
@@ -19,13 +21,17 @@
   ![Forks](https://img.shields.io/github/forks/barrientosjesus/dnd5e-character-generator?style=social)
   <br>
   ![Version](https://img.shields.io/badge/version-1.0-black)
+  <br>
+  ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdnd5e-character-creator-83a7088f4a41.herokuapp.com%2Fapi%2Fcharacter_count&query=%24.characterCount&style=flat-square&label=Characters%20Created)
 
 </div>
 
 ## 📝 Description
+
 This is a web app that allows you quickly create D&D Characters. Only has information available through SRD which follows CC BY 4.0
 
 # Screenshot
+
 | Description | Screenshot |
 |------------ | ------------|
 | <h3 align="center">Landing Page</h3> | <img src="https://i.imgur.com/fOhVnYN.jpg">
@@ -33,6 +39,7 @@ This is a web app that allows you quickly create D&D Characters. Only has inform
 | <h3 align="center">Characters Index</h3> | <img src="https://i.imgur.com/I0yRQIt.jpg">
 
 # Technologies Used
+
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -45,7 +52,7 @@ This is a web app that allows you quickly create D&D Characters. Only has inform
 ![Static Badge](https://img.shields.io/badge/MidJourney-blue?style=flat-square&label=MJ&color=%238c2bbd&link=https%3A%2F%2Fwww.midjourney.com%2Fapp%2F)
 ![Static Badge](https://img.shields.io/badge/Imgur%20-%20%23333?style=flat-square&logo=imgur&label=Imgur)
 ![MDN Web Docs](https://img.shields.io/badge/MDN_Web_Docs-black?style=for-the-badge&logo=mdnwebdocs&logoColor=white)
-
+![TEST](https://badgen.net/http:/localhost:3000/api/character_count)
 
 # Deploy Locally
 
@@ -55,6 +62,7 @@ This is a web app that allows you quickly create D&D Characters. Only has inform
 4. Create a `.env` file
 5. Add the following to the `.env` file
 ⚠️ **Note: MAKE SURE THIS FILE IS GITIGNORED** ⚠️
+
 ```env
 DATABASE_URL="YOUR MONGODB URL"
 GOOGLE_CLIENT_ID="YOUR GOOGLE CLIENT ID"
@@ -85,4 +93,3 @@ This work is licensed under a
 
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
-[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
