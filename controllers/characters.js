@@ -31,7 +31,6 @@ async function index(req, res) {
 
 async function show(req, res) {
     const character = await Character.findById(req.params.id).populate('user').populate('favorites');
-    console.log(character.abilityScores[0].mod);
     const skillList = await API.getSkills();
     for (const skill of skillList) {
         const skillASName = skill.ability_score.name;
