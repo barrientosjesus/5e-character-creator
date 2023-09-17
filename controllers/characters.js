@@ -18,7 +18,7 @@ async function index(req, res) {
     if (req.query.class) query.class = req.query.class;
 
     const characters = await Character.find(query);
-    characters.sort((a, b) => b.favoritesCount - a.favoritesCount);;
+    characters.sort((a, b) => b.favoritesCount - a.favoritesCount);
 
     const title = query.user ? 'My Characters' : query.class ? `${query.class} Characters` : 'Characters';
 
