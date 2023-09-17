@@ -23,6 +23,9 @@
   ![Version](https://img.shields.io/badge/version-1.0-black)
   <br>
   ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdnd5e-character-creator-83a7088f4a41.herokuapp.com%2Fapi%2Fcharacter_count&query=%24.characterCount&style=flat-square&label=Characters%20Created)
+  ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdnd5e-character-creator-83a7088f4a41.herokuapp.com%2Fapi%2Fmost_popular_character&query=name&style=flat-square&label=Most%20Popular%20Character%3A)
+
+
 
 </div>
 
