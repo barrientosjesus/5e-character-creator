@@ -35,7 +35,7 @@ passport.use(new BnetStrategy(
         clientID: process.env.BNET_ID,
         clientSecret: process.env.BNET_SECRET,
         scope: process.env.OAUTH_SCOPES || "wow.profile",
-        callbackURL: process.env.OAUTH_CALLBACK_URL || "http://localhost:3000/oauth/battlenet/callback",
+        callbackURL: process.env.BNET_CALLBACK || "http://localhost:3000/oauth/battlenet/callback",
         region: "us"
     },
 
